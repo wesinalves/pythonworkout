@@ -6,7 +6,7 @@ ax1 = plt.axes()
 plt.xlabel('Meses')
 plt.ylabel('Capital Acumulado')
 
-plotlays, plotcols, plabels = [2], ["black","red"], ["juros simples", "juros compostos"]
+plotcols, plabels = ["black","red"], ["juros simples", "juros compostos"]
 lines = []
 x1,y1 = [],[]
 x2,y2 = [],[]
@@ -15,7 +15,8 @@ x2,y2 = [],[]
 frame_num = 15
 
 for index in range(2):
-    lobj = ax1.plot([],[],lw=2,color=plotcols[index], label=plabels[index])[0]
+    lobj = ax1.plot([],[],
+        lw=2,color=plotcols[index], label=plabels[index])[0]
     lines.append(lobj)
 
 
@@ -41,13 +42,14 @@ def animate(i):
 
     #for index in range(0,1):
     for lnum,line in enumerate(lines):
-        line.set_data(xlist[lnum], ylist[lnum]) # set data for each line separately. 
+        # set data for each line separately.
+        line.set_data(xlist[lnum], ylist[lnum])  
 
     return lines
 
-# call the animator.  blit=True means only re-draw the parts that have changed.
-anim = animation.FuncAnimation(fig, animate, init_func=init,
-                               frames=frame_num, interval=50, blit=True, repeat=False )
-
-
+# call the animator. 
+anim = animation.FuncAnimation(
+    fig, animate, init_func=init,
+    frames=frame_num, interval=50, blit=True, repeat=False )
+    
 plt.show()
