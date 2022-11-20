@@ -10,48 +10,49 @@ by Wesin Ribeiro
 import matplotlib.pyplot as plt
 
 def f(x):
-    """Dlecare function to find the root."""
-    return x**2 - 2   # f(x) = x^2 - 2
+    return x**2 - 2
 
 def f_prime(x):
-    """Dlecare derivative of the function to find the root."""
-    return 2*x        # f'(x) = 2x
+    return 2*x
 
-def newtons_method(
-    x0,               # The initial guess    
-    tolerance,        # 7-digit accuracy is desired
-    epsilon,          # Do not divide by a number smaller than this
-    max_iterations,   # The maximum number of iterations to execute
+def newton_method(
+    x0,         # the initial guess
+    tolerance,  # accuracy
+    epsilon,    # do not divide by a number smaller than this
+    max_iterations
     ):
     guesses = []
     for i in range(max_iterations):
         y = f(x0)
         yprime = f_prime(x0)
 
-        if abs(yprime) < epsilon:       
+        if abs(yprime) < epsilon:
             break
 
-        x1 = x0 - y / yprime        # Do Newton's computation
+        x1 = x0 - y / yprime    # do Newton's computation
 
-        if abs(x1 - x0) <= tolerance:   
+        if abs(x1 - x0) <= tolerance:
             guesses.append((x1, y))
-            return x1, guesses          
+            return x1, guesses
         
         guesses.append((x1, y))
-        x0 = x1                         
 
-    return None  
+        x0 = x1
+    
+    return None
 
 def main():
-    x = [i for i in range(-18, 20)]
-    y = [f(e) for e in x]
+    X = [x for x in range(-18, 20)]
+    Y = [f(x) for x in X]
 
-    root, guesses = newtons_method(14, 0.0001, 0.00001, 50)
+    root, guesses = newton_method(15, 0.0001, 0.00001, 50)
     print(root)
 
-    plt.plot(x,y, 'r-')
-    plt.plot([g[0] for g in guesses],[g[1] for g in guesses], 'bo')
+    # let's plot the graph
+    plt.plot(X, Y, 'r-', label='function')
+    plt.plot([g[0] for g in guesses], [g[1] for g in guesses], 'bo', label='guesses')
     plt.grid()
+    plt.legend()
     plt.show()
 
 main()
