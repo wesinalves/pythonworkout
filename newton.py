@@ -14,7 +14,7 @@ def f(x):
     return x**2 - 2   # f(x) = x^2 - 2
 
 def f_prime(x):
-    """Dlecare derivative function to find the root."""
+    """Dlecare derivative of the function to find the root."""
     return 2*x        # f'(x) = 2x
 
 def newtons_method(
@@ -48,7 +48,6 @@ def main():
 
     root, guesses = newtons_method(14, 0.0001, 0.00001, 50)
     print(root)
-
 
     plt.plot(x,y, 'r-')
     plt.plot([g[0] for g in guesses],[g[1] for g in guesses], 'bo')
