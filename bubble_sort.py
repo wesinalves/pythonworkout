@@ -1,7 +1,15 @@
+'''
+Bubble sort algorithm
+by Wesin Ribeiro
+100 days of code in Python
+8/99
+'''
+
 from random import randint
 
 def bubble_sort(vector):
-    '''sort a vector in ascending order'''
+    '''Bubble sort method'''
+
     length = len(vector)
 
     for i in range(length):
@@ -17,3 +25,5 @@ def main():
     print(elements)
 
 main()
+ 
+    
