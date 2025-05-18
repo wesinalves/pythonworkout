@@ -114,7 +114,7 @@ def main():
         name="Maximus", 
         strength=90, 
         skill=85, 
-        health=100, 
+        health=1000, 
         weapons=weapons
     )
 
@@ -122,7 +122,7 @@ def main():
         name="Commodus", 
         strength=75, 
         skill=60, 
-        health=100, 
+        health=1000, 
         weapons=weapons
     )
 
